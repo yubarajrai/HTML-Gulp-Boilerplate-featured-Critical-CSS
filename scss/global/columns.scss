@@ -1,0 +1,250 @@
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+
+  .col {
+    flex-basis: 100%;
+    max-width: 100%;
+
+    &-1 {
+      flex-basis: 8.33%;
+      max-width: 8.33%;
+    }
+
+    &-2 {
+      flex-basis: 16.66%;
+      max-width: 16.66%;
+    }
+
+    &-3 {
+      flex-basis: 24.99%;
+      max-width: 24.99%;
+    }
+
+    &-4 {
+      flex-basis: 33.32%;
+      max-width: 33.32%;
+    }
+
+    &-5 {
+      flex-basis: 41.65%;
+      max-width: 41.65%;
+    }
+
+    &-6 {
+      flex-basis: 49.98%;
+      max-width: 49.98%;
+    }
+
+    &-7 {
+      flex-basis: 58.31%;
+      max-width: 58.31%;
+    }
+
+    &-8 {
+      flex-basis: 66.64%;
+      max-width: 66.64%;
+    }
+
+    &-9 {
+      flex-basis: 74.97%;
+      max-width: 74.97%;
+    }
+
+    &-10 {
+      flex-basis: 83.3%;
+      max-width: 83.3%;
+    }
+
+    &-11 {
+      flex-basis: 91.63%;
+      max-width: 91.63%;
+    }
+
+    &-12 {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+
+    &-sm-1 {
+      @media all and (min-width: 540px) {
+        flex-basis: 8.33%;
+        max-width: 8.33%;
+      }
+    }
+
+    &-sm-2 {
+      @media all and (min-width: 540px) {
+        flex-basis: 16.66%;
+        max-width: 16.66%;
+      }
+    }
+
+    &-sm-3 {
+      @media all and (min-width: 540px) {
+        flex-basis: 24.99%;
+        max-width: 24.99%;
+      }
+    }
+
+    &-sm-4 {
+      @media all and (min-width: 540px) {
+        flex-basis: 33.32%;
+        max-width: 33.32%;
+      }
+    }
+
+    &-sm-5 {
+      @media all and (min-width: 540px) {
+        flex-basis: 41.65%;
+        max-width: 41.65%;
+      }
+    }
+
+    &-sm-6 {
+      @media all and (min-width: 540px) {
+        flex-basis: 49.98%;
+        max-width: 49.98%;
+      }
+    }
+
+    &-sm-7 {
+      @media all and (min-width: 540px) {
+        flex-basis: 58.31%;
+        max-width: 58.31%;
+      }
+    }
+
+    &-sm-8 {
+      @media all and (min-width: 540px) {
+        flex-basis: 66.64%;
+        max-width: 66.64%;
+      }
+    }
+
+    &-sm-9 {
+      @media all and (min-width: 540px) {
+        flex-basis: 74.97%;
+        max-width: 74.97%;
+      }
+    }
+
+    &-sm-10 {
+      @media all and (min-width: 540px) {
+        flex-basis: 83.3%;
+        max-width: 83.3%;
+      }
+    }
+
+    &-sm-11 {
+      @media all and (min-width: 540px) {
+        flex-basis: 91.63%;
+        max-width: 91.63%;
+      }
+    }
+
+    &-sm-11 {
+      @media all and (min-width: 540px) {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+    }
+
+    &-md-2 {
+      @media all and (min-width: 840px) {
+        flex-basis: 16.66%;
+        max-width: 16.66%;
+      }
+    }
+
+    &-md-3 {
+      @media all and (min-width: 840px) {
+        flex-basis: 24.99%;
+        max-width: 24.99%;
+      }
+    }
+
+    &-md-4 {
+      @media all and (min-width: 840px) {
+        flex-basis: 33.32%;
+        max-width: 33.32%;
+      }
+    }
+
+    &-md-5 {
+      @media all and (min-width: 840px) {
+        flex-basis: 41.65%;
+        max-width: 41.65%;
+      }
+    }
+
+    &-md-6 {
+      @media all and (min-width: 840px) {
+        flex-basis: 49.98%;
+        max-width: 49.98%;
+      }
+    }
+
+    &-md-7 {
+      @media all and (min-width: 840px) {
+        flex-basis: 58.31%;
+        max-width: 58.31%;
+      }
+    }
+
+    &-md-9 {
+      @media all and (min-width: 840px) {
+        flex-basis: 74.97%;
+        max-width: 74.97%;
+      }
+    }
+
+    &-md-10 {
+      @media all and (min-width: 840px) {
+        flex-basis: 83.3%;
+        max-width: 83.3%;
+      }
+    }
+
+    &-lg-2 {
+      @media all and (min-width: 1024px) {
+        flex-basis: 16.66%;
+        max-width: 16.66%;
+      }
+    }
+
+    &-lg-3 {
+      @media all and (min-width: 1024px) {
+        flex-basis: 24.99%;
+        max-width: 24.99%;
+      }
+    }
+
+    &-lg-4 {
+      @media all and (min-width: 1024px) {
+        flex-basis: 33.32%;
+        max-width: 33.32%;
+      }
+    }
+
+    &-lg-8 {
+      @media all and (min-width: 1024px) {
+        flex-basis: 66.64%;
+        max-width: 66.64%;
+      }
+    }
+
+    &-lg-9 {
+      @media all and (min-width: 1024px) {
+        flex-basis: 74.97%;
+        max-width: 74.97%;
+      }
+    }
+  }
+}
+
+.col {
+  padding-right: 10px;
+  padding-left: 10px;
+}
