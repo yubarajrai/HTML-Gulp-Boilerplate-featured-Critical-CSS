@@ -4,7 +4,8 @@
   "description": "This boilerplate supports partial files by file-include package and generates critical css separate file",
   "main": "index.js",
   "scripts": {
-    "start": "gulp serve"
+    "start": "gulp serve",
+    "build": "gulp build"
   },
   "keywords": [],
   "author": {
@@ -22,6 +23,7 @@
     "gulp-connect": "^5.7.0",
     "gulp-file-include": "^2.1.0",
     "gulp-fs": "0.0.2",
+    "gulp-group-css-media-queries": "^1.2.2",
     "gulp-load-plugins": "^2.0.1",
     "gulp-notify": "^3.2.0",
     "gulp-open": "^3.0.1",

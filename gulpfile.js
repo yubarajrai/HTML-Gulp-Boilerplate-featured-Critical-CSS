@@ -5,7 +5,8 @@ const server = require('gulp-server-livereload');
 let cleanCSS = require('gulp-clean-css');
 let uglify = require('gulp-uglify');
 let fs = require('fs');
-var criticalCss = require('gulp-penthouse');
+let criticalCss = require('gulp-penthouse');
+let gcmq = require('gulp-group-css-media-queries');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const {
     Fiber,
@@ -23,7 +24,7 @@ sass.compiler = require('node-sass');
 let paths = {
     tempDest: '../assets/',
     styles: {
-        src: ['./scss/app.scss'],
+        src: ['./scss/**/*.scss'],
         watch: ['./scss/**']
     },
     script: {
@@ -88,6 +89,14 @@ gulp.task('critical-css', function () {
         .pipe(gulp.dest(paths.tempDest));
 });
 
+
+gulp.task('gcmp', function () {
+    return gulp.src('../assets/app.min.css')
+        .pipe(gcmq())
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest(paths.tempDest));
+});
+
 gulp.task('copy:html', function () {
     return gulp.src(paths.html.src)
         .pipe(fileinclude({
@@ -125,7 +134,7 @@ gulp.task('copy:fonts', function () {
 });
 
 gulp.task('webserver', function () {
-    gulp.src('../assets')
+    return gulp.src('../assets')
         .pipe(server({
             livereload: true,
             open: true
@@ -139,7 +148,6 @@ gulp.task('watch', function () {
     gulp.watch(paths.uploads.watch, gulp.series('copy:uploads'));
     gulp.watch(paths.script.watch, gulp.series('copy:script'));
     gulp.watch(paths.fonts.watch, gulp.series('copy:fonts'));
-    gulp.watch(paths.tempDest, gulp.series('critical-css'));
 });
 
 /**
@@ -155,4 +163,17 @@ gulp.task('serve', gulp.parallel(
     'copy:fonts',
     'watch',
     'webserver'
-), setTimeout(gulp.parallel('critical-css'), 1000));
+    )
+);
+
+gulp.task('build', gulp.parallel(
+    'sass',
+    'copy:html',
+    'copy:images',
+    'copy:uploads',
+    'copy:script',
+    'copy:fonts'
+    ),
+    setTimeout(gulp.parallel('gcmp'), 1000),
+    setTimeout(gulp.parallel('critical-css'), 2000)
+);
