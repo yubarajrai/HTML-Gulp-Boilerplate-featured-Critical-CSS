@@ -1,16 +1,28 @@
+//path
 $image-path: './images/';
 $font-path: './fonts/';
 
+//size
+$base-font-size: 16px;
+$ratio: 1.414;
+$site-width: 1216px;
+
+// Fonts
+$header-font-family: 'Rajdhani', sans-serif;
+$body-font-family: 'Karma', serif;
+
+//color
 $primary-color: #3f3f3f;
 $secondary-color: orange;
 $black-color: #000000;
 $white-color: #FFFFFF;
 
-// Grid configuration
-$__row--width: 1200px;
+// Grid customization
+$__row--width: $site-width;
 $__grid--columns: 12;
 $__grid--gutters: 20px;
 
+// Media Query
 $__grid--breakpoints: (
         small:0,
         medium:640px,
@@ -18,10 +30,29 @@ $__grid--breakpoints: (
         large:1024px,
         xlarge:1200px
 );
-// endGrid
 
-@mixin list-none {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+// Transition
+$transition: all 0.25s ease-in;
+
+// Social Colors Guys, Social Colors
+$twitter: #00aced;
+$facebook: #3b5998;
+$linkedin: #007bb6;
+$googleplus: #dd4b39;
+$pinterest: #cb2027;
+$youtube: #bb0000;
+$vimeo: #aad450;
+$tumblr: #32506d;
+$instagram: #517fa4;
+$flickr: #ff0084;
+$dribbble: #ea4c89;
+$quora: #a82400;
+$foursquare: #0072b1;
+$forrst: #5B9A68;
+$vk: #45668e;
+$wordpress: #21759b;
+$stumbleupon: #EB4823;
+$yahoo: #7B0099;
+$blogger: #fb8f3d;
+$soundcloud: #ff3a00;
+$github: #703083;
