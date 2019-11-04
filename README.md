@@ -26,6 +26,10 @@ To run task:
 
 3) Grid uses on html class
 - .row > .column {media query classes; eg, large-6 small-12}
+structure:
+  <div class="row">
+    <div class="column small-12 large-6"></div>
+  </div>
 
 
 4) Breakpoint uses on scss
