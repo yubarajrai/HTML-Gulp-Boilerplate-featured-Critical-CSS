@@ -28,10 +28,10 @@ To run task:
 - .row > .column {media query classes; eg, large-6 small-12}
 structure:
 <pre>
-  &gt;div class="row"&lt;
-    &gt;div class="column small-12 large-6"&lt; ... &gt;/div&lt;
-    &gt;div class="column small-12 large-6"&lt; ... &gt;/div&lt;
-  &gt;/div&lt;
+  &lt;div class="row"&gt;
+    &lt;div class="column small-12 large-6"&gt; ... &lt;/div&gt;
+    &lt;div class="column small-12 large-6"&gt; ... &lt;/div&gt;
+  &lt;/div&gt;
 </pre>
 
 4) Breakpoint uses on scss
