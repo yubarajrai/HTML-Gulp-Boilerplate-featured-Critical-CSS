@@ -44,6 +44,7 @@ structure:
 #Customize Media Query 
  It works on both html class and scss breakpoint 
  
+ <pre>
  $__breakpoints: (
         small:0,
         medium:640px,
@@ -51,3 +52,4 @@ structure:
         large:1024px,
         xlarge:1200px
 )
+ </pre>
