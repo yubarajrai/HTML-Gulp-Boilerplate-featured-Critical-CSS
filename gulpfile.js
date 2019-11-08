@@ -24,7 +24,7 @@ sass.compiler = require('node-sass');
 let paths = {
     tempDest: '../assets/',
     styles: {
-        src: ['./scss/**/*.scss'],
+        src: ['./scss/*.scss'],
         watch: ['./scss/**']
     },
     script: {
