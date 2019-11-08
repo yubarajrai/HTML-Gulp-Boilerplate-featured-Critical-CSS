@@ -7,6 +7,7 @@ let uglify = require('gulp-uglify');
 let fs = require('fs');
 let criticalCss = require('gulp-penthouse');
 let gcmq = require('gulp-group-css-media-queries');
+let globbing = require('gulp-css-globbing');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const {
     Fiber,
@@ -15,7 +16,6 @@ const {
     concat,
     sourcemaps,
     plumber,
-    sassGlob,
     rename,
     connect
 } = gulpLoadPlugins();
@@ -59,11 +59,8 @@ if (!fs.existsSync(paths.tempDest)) {
 gulp.task('sass', function () {
     return gulp.src(paths.styles.src)
         .pipe(plumber())
-        .pipe(sassGlob({
-            ignorePaths: [
-                '**/_f1.scss',
-                'import/**'
-            ]
+        .pipe(globbing({
+            extensions: ['.scss']
         }))
         .pipe(sass({fiber: Fiber}).on('error', sass.logError))
         .pipe(sourcemaps.write())
