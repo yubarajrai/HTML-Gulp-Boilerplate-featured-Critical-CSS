@@ -3,11 +3,12 @@ let gulp = require('gulp');
 const fileinclude = require('gulp-file-include');
 const server = require('gulp-server-livereload');
 let cleanCSS = require('gulp-clean-css');
-let uglify = require('gulp-uglify');
+let uglify = require('gulp-uglify-es').default;
 let fs = require('fs');
 let criticalCss = require('gulp-penthouse');
 let gcmq = require('gulp-group-css-media-queries');
 let globbing = require('gulp-css-globbing');
+let gutil = require('gulp-util');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const {
     Fiber,
@@ -30,6 +31,10 @@ let paths = {
     script: {
         src: ['./js/*.js'],
         watch: ['./js/**']
+    },
+    scriptLib: {
+        src: ['./js/libs/*.js'],
+        watch: ['./js/libs/**']
     },
     html: {
         src: ['./*.html'],
@@ -124,6 +129,14 @@ gulp.task('copy:script', function () {
         .pipe(connect.reload());
 });
 
+gulp.task('copy:scriptLib', function () {
+    return gulp.src(paths.scriptLib.src)
+        .pipe(uglify())
+        .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+        .pipe(gulp.dest(paths.tempDest + 'js-lib'))
+        .pipe(connect.reload());
+});
+
 gulp.task('copy:fonts', function () {
     return gulp.src(paths.fonts.src)
         .pipe(gulp.dest(paths.fonts.dest))
@@ -144,6 +157,7 @@ gulp.task('watch', function () {
     gulp.watch(paths.images.watch, gulp.series('copy:images'));
     gulp.watch(paths.uploads.watch, gulp.series('copy:uploads'));
     gulp.watch(paths.script.watch, gulp.series('copy:script'));
+    gulp.watch(paths.scriptLib.watch, gulp.series('copy:scriptLib'));
     gulp.watch(paths.fonts.watch, gulp.series('copy:fonts'));
 });
 
@@ -157,6 +171,7 @@ gulp.task('serve', gulp.parallel(
     'copy:images',
     'copy:uploads',
     'copy:script',
+    'copy:scriptLib',
     'copy:fonts',
     'watch',
     'webserver'
@@ -169,6 +184,7 @@ gulp.task('build', gulp.parallel(
     'copy:images',
     'copy:uploads',
     'copy:script',
+    'copy:scriptLib',
     'copy:fonts'
     ),
     setTimeout(gulp.parallel('gcmp'), 1000),
