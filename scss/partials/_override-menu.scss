@@ -1,0 +1,9 @@
+nav[class*="-navigation"] {
+    li {
+        a {
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+}
