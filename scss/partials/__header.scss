@@ -1,4 +1,13 @@
-.header__top {
-  background-color: $primary-color;
-  color: white;
+.header {
+  &__top {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  &__site-logo {
+    img {
+      max-width: 80px;
+      height: auto;
+    }
+  }
 }

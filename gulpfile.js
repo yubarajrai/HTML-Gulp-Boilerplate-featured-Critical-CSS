@@ -77,20 +77,19 @@ gulp.task('sass', function () {
 
 });
 
-gulp.task('critical-css', function () {
-    return gulp.src('../assets/app.min.css')
-        .pipe(criticalCss({
-            out: '/app.critical.css',
-            url: paths.tempDest + '/index.html',
-            width: 1300,
-            height: 900,
-            strict: true,
-            userAgent: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
-        }))
-        .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest(paths.tempDest));
-});
-
+// gulp.task('critical-css', function () {
+//     return gulp.src('../assets/app.min.css')
+//         .pipe(criticalCss({
+//             out: '/app.critical.css',
+//             url: paths.tempDest + '/index.html',
+//             width: 1300,
+//             height: 900,
+//             strict: true,
+//             userAgent: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+//         }))
+//         .pipe(cleanCSS({compatibility: 'ie8'}))
+//         .pipe(gulp.dest(paths.tempDest));
+// });
 
 gulp.task('gcmp', function () {
     return gulp.src('../assets/app.min.css')
@@ -187,6 +186,6 @@ gulp.task('build', gulp.parallel(
     'copy:scriptLib',
     'copy:fonts'
     ),
-    setTimeout(gulp.parallel('gcmp'), 1000),
-    setTimeout(gulp.parallel('critical-css'), 2000)
+    setTimeout(gulp.parallel('gcmp'), 2000),
+    // setTimeout(gulp.parallel('critical-css'), 2000)
 );

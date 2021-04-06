@@ -10,7 +10,9 @@ $__row--width: 1200px !default;
 
 $__breakpoints: (
         small:0,
+        smallup: 540px,
         medium:640px,
+        header: 800px,
         tablet: 768px,
         large:1024px,
         xlarge:1200px
@@ -24,7 +26,23 @@ $__breakpoints: (
   & + & {
     margin-top: $__grid--gutters;
   }
+
+  &-fluid {
+    max-width: 100%;
+  }
 }
+
+.container {
+  box-sizing: border-box;
+  max-width: $__row--width;
+  width: 100%;
+  margin: 0 auto;
+
+  &-fluid {
+    max-width: 100%;
+  }
+}
+
 
 .column {
   box-sizing: border-box;

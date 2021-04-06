@@ -1,0 +1,26 @@
+.breadcrumbs {
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  .icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  a, span {
+    display: inline-block;
+    padding: 4px 8px;
+    vertical-align: middle;
+    font-size: 14px;
+    color: lighten($black-color, 50%);
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      color: $secondary-color;
+      text-decoration: underline; 
+    }
+  }
+}

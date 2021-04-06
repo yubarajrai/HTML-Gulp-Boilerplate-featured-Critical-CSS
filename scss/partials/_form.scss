@@ -1,0 +1,386 @@
+.form-title {
+    border-bottom: 1px solid transparentize($color: $black-color, $amount: 0.95);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 21px;
+    font-weight: 600;
+    color: $primary-color;
+
+    @include breakpoint(large) {
+        font-size: 25px;
+    }
+
+    &__counter {
+        font-size: 21px;
+        font-style: italic;
+        font-weight: 400;
+        color: darken($white-color, 30%);
+    }
+
+    &__sub {
+        display: flex;
+        gap: 12px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 21px;
+        font-weight: 600;
+        text-transform: none;
+
+        small {
+            display: block;
+            width: 100%;
+            margin-top: 6px;
+            color: lighten($color: $black-color, $amount: 60%);
+            font-size: 18px;
+        }
+    }
+
+    &__info {
+        display: block;
+        width: 100%;
+        font-size: 14px !important; 
+        color: $orrange-color !important;
+    }
+}
+
+.form-box {
+    padding: 30px;
+
+    fieldset.form-box__inner {
+        @include breakpoint(large) {
+            padding-left: 100px;
+        }
+    }
+
+    &--w100 {
+        min-width: 100%;
+    }
+
+    &__text {
+        padding: 20px;
+        line-height: 1.7;
+        color: lighten($color: $black-color, $amount: 40%);
+
+        p {
+            margin-bottom: 16px;
+        }
+    }
+
+    legend {
+        background-color: transparentize($color: $black-color, $amount: 0.99);
+        border: 1px solid transparentize($color: $black-color, $amount: 0.95);
+        padding: 12px;
+        font-weight: 600;
+        font-size: 19px;
+        color: $black-color;
+        line-height: 1;
+    }
+
+    fieldset {
+        border: 1px solid transparentize($color: $black-color, $amount: 0.90);
+        padding: 20px;
+
+        ~ fieldset {
+            margin-top: 20px;
+        }
+    }
+
+    input, textarea, select {
+        border: 1px solid transparentize($color: $black-color, $amount: 0.75);
+        border-radius: 4px;
+        width: 100%;
+        padding: 10px 20px;
+    }
+
+    input[type*="submit"] {
+        width: auto;
+    }
+
+    input[type*="checkbox"],
+    input[type*="radio"] {
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        cursor: pointer;
+
+        ~ label {
+            width: calc(100% - 40px);
+        }
+
+        &:hover {
+            outline: 1px dashed transparentize($color: $secondary-color, $amount: 0.5);
+        }
+    }
+
+    textarea {
+        height: 150px;
+    }
+
+    .button,
+    button[type*="submit"],
+    input[type*="submit"] {
+        position: relative;
+        display: inline-block;
+        background-color: $primary-color;
+        min-width: 160px;
+        padding: 12px 48px;
+        margin: 8px;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 500;
+        color: $white-color;
+        text-align: center;
+        z-index: 1;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: block;
+            background-color: darken($primary-color, 10%);
+            width: 0;
+            height: 100%;
+            transition: 0.3s;
+            z-index: -1;
+        }
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+    label {
+        display: block;
+        font-size: 15px;
+        font-weight: 600;
+        color: lighten($black-color, 50%);
+        text-transform: uppercase;
+      }
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+    li {
+        position: relative;
+        box-shadow: 0 0 2px transparentize($color: $black-color, $amount: 0.98);
+        border: 1px solid transparentize($color: $black-color, $amount: 0.98);
+        border-radius: 4px;
+        width: 100%;
+        margin: 8px 2px;
+        padding: 8px 16px;
+
+        @include breakpoint(smallup) {
+            width: 48%;
+        }
+
+        @include breakpoint(large) {
+            width: 24%;
+            margin: 8px 4px;
+        }
+
+        &.one-third {
+            @include breakpoint(smallup) {
+                width: 48%;
+            }
+
+            @include breakpoint(large) {
+                width: 30%;
+            }   
+        }
+
+        &.half-width {
+            @include breakpoint(large) {
+                width: 49%;
+            }
+        }
+
+        &.full-width {
+            width: 100%;
+        }
+    }
+
+    .checkbox-field,
+    .radio-field {
+        display: flex;
+        gap: 10px;
+        flex-wrap: nowrap;
+        cursor: pointer;
+
+        label {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        img {
+            width: 140px;
+            height: 70px;
+            object-fit: cover;
+            cursor: pointer;
+
+            ~ span {
+                display: block;
+                font-size: 13px;
+                text-align: center;
+                color: lighten($black-color, 80%);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px solid transparentize($color: $black-color, $amount: 0.90);
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float: left;
+}
+
+.custom-list {
+    list-style: disc;
+    padding-left: 26px;
+
+    ul {
+        list-style: decimal-leading-zero;
+        padding-left: 16px;
+    }
+    li {
+        width: 100%;
+        border: 0;
+        padding: 4px;
+        margin: 0;
+    }
+}
+
+.fields-bar {
+    display: flex;
+    
+    &__head {
+        img {
+            width: 140px;
+            height: 70px;
+            object-fit: cover;
+
+            ~ span {
+                display: none;
+            }
+        }
+    }
+
+    .checkbox-field,
+    .radio-field {
+        display: flex;
+        gap: 10px;
+        flex-wrap: nowrap;
+
+        label {
+            display: inline-block;
+        }
+    }
+
+    &__data {
+        width: calc(100% - 150px);
+        min-width: clac(90px * 10);
+    }
+
+    &--columns {
+        li {
+            width: 90px;
+        }
+    }
+}
+
+.rate-box {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+
+    input[type*="radio"] {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        visibility: hidden;
+        width: 22px;
+        height: 22px;
+        z-index: 1;
+      }
+
+      label {
+        position: relative;
+        display: inline-block;
+        padding: 6px;
+        background: url("#{$image-path}star-default.svg") no-repeat center center;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      label.selected,
+      label.selected ~ label {
+        background: url("#{$image-path}star-reviewed.svg") no-repeat center center;
+      }
+}
+
+.table {
+    label {
+        font-size: 0;
+        text-indent: -99999px;
+    }
+}
+
+.button-box {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.label-note {
+    display: inline-block;
+    bottom: 40px;
+    left: 0;
+    width: 100px;
+    padding-right: 6px;
+    line-height: 1;
+    font-weight: 400;
+    font-size: 13px;
+    text-align: left;
+
+    @include breakpoint(smallup) { 
+        position: absolute;
+    }
+
+    &-box {
+        position: relative;
+    }
+}
+
+.read-box {
+    opacity: 0.5;
+    pointer-events: none;
+    
+    
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        pointer-events: none;
+    }
+}
+
+.error,
+.required {
+    font-size: 12px;
+    color: $red-color;
+}

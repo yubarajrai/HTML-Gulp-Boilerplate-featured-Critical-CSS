@@ -1,0 +1,538 @@
+/** navigation styling */
+.off-canvas-navigation {
+  position: absolute;
+  right: 0;
+  background-color: $white-color;
+  width: 100%;
+  transform: translateX(100%);
+  padding-top: 32px;
+  overflow: hidden;
+  transition: 0.5s;
+  z-index: 1;
+
+  @include breakpoint(header) {
+    position: static;
+    max-height: none;
+    width: auto;
+    padding-top: 0;
+    transform: none;
+    overflow: visible;
+  }
+
+
+  ul {
+    list-style: none;
+
+    @include breakpoint(header down) {
+      min-height: 100vh;
+    }
+  }
+
+  .nav__visible & {
+    transform: translateX(0);
+    overflow: visible;
+
+    @include breakpoint(header) {
+      transform: none;
+    }
+  }
+
+  > ul {
+    @include breakpoint(header) {
+      display: flex;
+      align-items: center;
+    }
+
+    > li {
+      &.has-child-menu {
+        &.right-of-viewport {
+          > ul {
+            @include breakpoint(header) {
+              left: 0;
+            }
+          }
+        }
+      }
+
+      &:first-child {
+        > a {
+          @include breakpoint(header) {
+            padding-left: 0;
+          }
+        }
+      }
+
+      &:last-child {
+        a {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  li {
+    line-height: 1.2;
+    color: lighten($black-color, 50%);
+    z-index: 1;
+
+    @include breakpoint(header) {
+      position: relative;
+    }
+
+    &.has-child-menu {
+      z-index: 2;
+
+      &.enabled {
+        z-index: 3;
+      }
+    }
+
+    ul {
+      z-index: 4;
+
+      li {
+        &.has-child-menu.enabled {
+          z-index: 4;
+
+          ul {
+            z-index: 5;
+
+            li {
+              &.has-child-menu.enabled {
+                z-index: 5;
+
+                ul {
+                  z-index: 6;
+
+                  li {
+                    &.has-child-menu.enabled {
+                      z-index: 6;
+
+                      ul {
+                        z-index: 7;
+
+                        li {
+                          &.has-child-menu.enabled {
+                            z-index: 7;
+
+                            ul {
+                              z-index: 8;
+
+                              li {
+                                &.has-child-menu.enabled {
+                                  z-index: 8;
+
+                                  ul {
+                                    z-index: 9;
+
+                                    li {
+                                      &.has-child-menu.enabled {
+                                        z-index: 9;
+
+
+                                        ul {
+                                          z-index: 10;
+
+                                          li {
+                                            &.has-child-menu.enabled {
+                                              z-index: 10;
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.before-item {
+    }
+
+    &.after-item {
+    }
+
+    &:hover {
+      > .dropdown {
+        &:before {
+          border-color: $primary-color;
+        }
+      }
+      > a {
+        transform: none;
+        color: $primary-color;
+      }
+    }
+
+    > ul {
+      background-color: darken($white-color, 1%);
+      border: 1px solid darken($white-color, 15%);
+      min-width: 280px;
+      transition: 0.3s;
+
+      @include breakpoint(header) {
+        position: absolute;
+        top: 100%;
+        min-width: 180px;
+        display: none;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+
+      @include breakpoint(large) {
+        min-width: 280px;
+      }
+    }
+
+    /** Second level menu*/
+    &.has-child-menu {
+      &.parent-item {
+        > ul.child-access {
+          @include breakpoint(header down) {
+            background-color: transparent;
+            border: 0;
+          }
+
+          > li:not(.enabled) {
+            @include breakpoint(header down) {
+              opacity: 0;
+            }
+          }
+        }
+      }
+
+      > ul {
+        position: absolute;
+        top: 35px;
+        left: 0;
+        width: 100%;
+        transition: 0.5s;
+        transform: translateX(100%);
+
+        @include breakpoint(header) {
+          top: 100%;
+          transform: none;
+          width: auto;
+        }
+      }
+
+      li {
+        color: lighten($black-color, 50%);
+
+        a {
+          border-bottom: 1px solid darken($white-color, 6%);
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+
+        &:last-child {
+          a {
+            border-bottom: 0;
+          }
+        }
+
+        &:hover {
+          > .dropdown {
+            &:before {
+              border-color: $primary-color;
+            }
+          }
+        }
+      }
+
+      > a {
+        padding-right: 30px;
+      }
+
+      &:hover {
+        > ul {
+          @include breakpoint(header) {
+            display: block;
+            max-height: 1000px;
+            transition: 0.4s;
+            overflow: visible;
+            opacity: 1;
+          }
+        }
+      }
+
+      &.enabled {
+        > ul {
+          display: block;
+          transition: 0.3s;
+          transform: translateX(0);
+
+          @include breakpoint(header) {
+            transform: none;
+          }
+        }
+
+        > .dropdown {
+          @include breakpoint(header down) {
+            top: 0;
+            left: 0;
+            background-color: $white-color;
+          }
+
+          &::before {
+            border-top: 0;
+            border-right: 0;
+            border-bottom: 2px solid $primary-color;
+            border-left: 2px solid $primary-color;
+
+            @include breakpoint(header) {
+              border-top: 0;
+              border-right: 2px solid $primary-color;
+              border-bottom: 2px solid $primary-color;
+              border-left: 0;
+            }
+          }
+        }
+
+        &:hover {
+          > .dropdown {
+            &:before {
+              border-color: $primary-color;
+
+              @include breakpoint(header) {
+                border-color: $primary-color;
+              }
+            }
+          }
+        }
+      }
+
+      /** Third level menu*/
+      .has-child-menu {
+        > ul {
+          top: 0;
+          left: 0;
+          background-color: darken($white-color, 2%);
+
+          @include breakpoint(header) {
+            left: 100%;
+          }
+        }
+
+        li {
+          a {
+            border-bottom: 1px solid darken($white-color, 8%);
+          }
+
+          &:last-child {
+            a {
+              border-bottom: 0;
+            }
+          }
+        }
+
+        > .dropdown {
+          @include breakpoint(header down) {
+            top: auto;
+          }
+
+          &::before {
+            border-right: 2px solid lighten($primary-color, 10%);
+            border-bottom: 2px solid lighten($primary-color, 10%);
+
+            @include breakpoint(header) {
+              border-top: 2px solid lighten($primary-color, 10%);
+              border-right: 2px solid lighten($primary-color, 10%);
+              border-bottom: 0;
+            }
+          }
+        }
+
+        &.enabled {
+          > .dropdown {
+            @include breakpoint(header down) {
+              top: auto;
+              bottom: calc(100% + 3px);
+            }
+
+            &::before {
+              border-top: 0;
+              border-right: 0;
+              border-bottom: 2px solid $primary-color;
+              border-left: 2px solid $primary-color;
+
+              @include breakpoint(header) {
+                border-top: 2px solid lighten($primary-color, 10%);
+                border-right: 2px solid lighten($primary-color, 10%);
+                border-bottom: 0;
+                border-left: 0;
+              }
+            }
+          }
+
+          &:hover {
+            > .dropdown {
+              &:before {
+                border-color: $primary-color;
+
+                @include breakpoint(header) {
+                  border-color: $primary-color;
+                }
+              }
+            }
+          }
+        }
+
+        a {
+          font-size: 17px;
+        }
+      }
+
+      &.right-of-viewport {
+        > ul {
+          @include breakpoint(header) {
+            right: 100%;
+            left: auto;
+          }
+        }
+
+        .right-of-viewport {
+          > ul {
+            @include breakpoint(header) {
+              left: auto;
+              right: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  a {
+    display: block;
+    padding: 10px 16px;
+    font-size: 16px;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 400;
+
+    @include breakpoint(xlarge) {
+      padding-right: 20px;
+      padding-left: 20px;
+      font-size: 18px;
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-top: 2px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 32px;
+    z-index: 2;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      background-color: transparent;
+      border-top: 0;
+      border-right: 2px solid $primary-color;
+      border-bottom: 2px solid $primary-color;
+      border-left: 0;
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+    }
+
+    ~ ul {
+      z-index: 4;
+      &.child-access {
+        z-index: 4;
+      }
+
+      .dropdown {
+        z-index: 5;
+
+        ~ ul {
+          z-index: 5;
+          &.child-access {
+            z-index: 5;
+          }
+
+          .dropdown {
+            z-index: 6;
+
+            ~ ul {
+              z-index: 6;
+              &.child-access {
+                z-index: 6;
+              }
+
+              .dropdown {
+                z-index: 7;
+
+                ~ ul {
+                  z-index: 7;
+                  &.child-access {
+                    z-index: 7;
+                  }
+
+                  .dropdown {
+                    z-index: 8;
+
+                    ~ ul {
+                      z-index: 8;
+                      &.child-access {
+                        z-index: 8;
+                      }
+
+                      .dropdown {
+                        z-index: 9;
+
+                        ~ ul {
+                          z-index: 9;
+                          &.child-access {
+                            z-index: 9;
+                          }
+
+                          .dropdown {
+                            z-index: 10;
+
+                            ~ ul {
+                              z-index: 10;
+                              &.child-access {
+                                z-index: 10;
+                              }
+
+                              .dropdown {
+                                z-index: 11;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
